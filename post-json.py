@@ -1,13 +1,15 @@
 import requests
 import json
 
-jsonfile = open("C:\\Users\\sujit\\Downloads\\devices_Devices.json","r")
+jsonfile = open("C:\\Users\\sujit\\Downloads\\00000_Info.json","r")
 jsondata = jsonfile.read()
 
 obj=json.loads(jsondata)
 print(type(obj))
-bucket_name="openmv-devices"
-key = "openmv.json"
+bucket_name="raspi-dev"
+key = "0000_info.json"
 
-r = requests.post("https://fc2vjsbsad.execute-api.us-east-1.amazonaws.com/prod/upload?bucket="+bucket_name+"&key="+key,json=obj)
-print(r.text)
+header_r = {"x-api-key":""}
+
+r = requests.post("https://l1muii6ihk.execute-api.us-east-1.amazonaws.com/v1/uploads",json=obj,headers=header_r)
+print(r.headers)
